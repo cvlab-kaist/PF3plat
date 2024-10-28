@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="PF3plat outputs 3D Gaussian Splats from unposed set of images.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PF3plat : Pose-Free Feed-Forward 3D Gaussian Splatting</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://cvlab-kaist.github.io/PF3plat">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Related Work
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://cvlab-kaist.github.io/CoPoNeRF/">
+            CoPoNeRF
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">PF3plat : Pose-Free Feed-Forward <br> 3D Gaussian Splatting</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://sunghwanhong.github.io/">Sunghwan Hong</a><sup>1,*</sup>,</span>
+            <span class="author-block">
+              <a href="https://crepejung00.github.io/">Jaewoo Jung</a><sup>2,*</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=zu-I2fYAAAAJ">Heeseong Shin</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://onground-korea.github.io/">Jisang Han</a><sup>2</sup>,
+            </span>
+            <br>
+            <span class="author-block">
+              <a href="https://jlyang.org/">Jialong Yang</a><sup>3,†</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.microsoft.com/en-us/research/people/cluo/">Chong Luo</a><sup>3,†</sup>,
+            </span>
+              <span class="author-block">
+                <a href="https://cvlab.kaist.ac.kr/members/faculty">Seungryong Kim</a><sup>2,†</sup>
+              </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Korea University</span>
+            <span class="author-block"><sup>2</sup>KAIST</span>
+            <span class="author-block"><sup>3</sup>Microsoft Research Asia</span>
+          </div>
+
+          <div class="is-size-10 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal Contribution,</span>
+            <span class="author-block"><sup>†</sup>Corresponding Authors</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Comming Soon) </span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/pfsplat-projectpage.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <b>Pf3plat</b> estimates multi-view consistent depth, accurate camera pose, <br> photorealistic novel views from uncalibrated image collections.
+
+
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <!-- Highlights -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          We consider the problem of novel view synthesis from unposed images in a single feed-forward. 
+          Our framework capitalizes on fast speed, scalability, and high-quality 3D reconstruction and view synthesis capabilities of 3DGS, 
+          where we further extend it to offer a practical solution that relaxes common assumptions such as dense image views, 
+          accurate camera poses, and substantial image overlaps. We achieve this through identifying and addressing unique challenges 
+          arising from the use of pixel-aligned 3DGS: misaligned 3D Gaussians across different views induce noisy or sparse gradients 
+          that destabilize training and hinder convergence, especially when above assumptions are not met. 
+          To mitigate this, we employ pre-trained monocular depth estimation and visual correspondence models to achieve coarse 
+          alignments of 3D Gaussians. We then introduce lightweight, learnable modules to refine depth and pose estimates from the coarse alignments, 
+          improving the quality of 3D reconstruction and novel view synthesis. Furthermore, the refined estimates are leveraged to estimate geometry 
+          confidence scores, which assess the reliability of 3D Gaussian centers and condition the prediction of Gaussian parameters accordingly. 
+          Extensive evaluations on large-scale real-world datasets demonstrate that PF3plat sets a new state-of-the-art across all benchmarks, 
+          supported by comprehensive ablation studies validating our design choices.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" style="margin-top: -20px">Architecture</h2>
+
+        <img src="static/images/overall-architecture.png" class="center">
+
+        <div class="content has-text-justified" style="margin-top: 15px; text-align: left;">
+          (Coarse Alignment) Given a set of unposed images, <b>PF3plat</b> first coarsely aligns the Gaussians with initial depth and pose estimated from pre-trained monocular depth estimation and visual correspondence models. <br>
+          (Fine Alignment) Initial depth and pose estimates are further refined through learnable modules to improve the quality of 3D reconstruction and novel view synthesis where the refined estimates are used to estimate geometry confidence scores.
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Qualitative Comparisons</h2>
+        <div class="content has-text-justified">
+          <p>Compared to previous state-of-the-art methods, <b>Pf3plat</b> shows superior performance in photorealistic novel view synthesis across all datasets. Specifically, <b>Pf3plat</b> enables accurate pose estimation even for scenes with complex geometry and large textureless regions where previous works fail.</p>
+        </div>
+        <div class="content has-text-centered">
+          <b>RealEstate10K</b>
+        </div>
+        <img src="static/images/pf3plat-re10k.png" class="center" alt="trained on RealEstate10K">
+        <div class="content has-text-centered">
+          <b>ACID</b>
+        </div>
+        <img src="static/images/pf3plat-acid.png" class="center" alt="trained on ACID">
+        <div class="content has-text-centered">
+          <b>DL3DV</b>
+        </div>
+        <img src="static/images/pf3plat-dl3dv.png" class="center" alt="trained on DL3DV">
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Comparisons of Cross-dataset Generalization</h2>
+
+        <div class="content has-text-justified">
+          <p>Here, we present the superior performance of cross-dataset generalization of <b>PF3plat</b> evaluated in the setting on both <br> DL3DV &rarr; RealEstate10K and RealEstate10K &rarr; DL3DV.</p>
+        </div>
+
+        <img src="static/images/Cross-dataset Evaluation.png" class="center" alt="trained on DL3DV">
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Details of Fine-Alignment Module</h2>
+
+        <div class="content has-text-justified">
+          <p>Given the initial depth and pose from our coarse alignment module, <b>PF3plat</b> further refines the depth and pose estimates through learnable modules to improve the quality of 3D reconstruction and novel view synthesis. <br> The refined estimates are used to estimate geometry confidence scores, which assess the reliability of 3D Gaussian centers and condition the prediction of Gaussian parameters accordingly.</p>
+        </div>
+
+        <img src="static/images/pf3plat-architecture.png" class="center" alt="trained on DL3DV">
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code></code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="static/pdfs/chen2024mvsplat.pdf" target="_blank" style="text-decoration : none">
+        <svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"></path></svg><!-- <i class="fas fa-file-pdf"></i> Font Awesome fontawesome.com -->
+      </a>
+      <a class="icon-link" href="https://github.com/donydchen/mvsplat" disabled="">
+        <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github"></i> Font Awesome fontawesome.com -->
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            Template was borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+          under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
