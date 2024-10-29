@@ -22,19 +22,18 @@
     gtag('config', 'G-PYVRSFMDRL');
   </script>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+  <link href="./static/css/sans.css" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/selection-panel.css">
   <link rel="icon" href="./static/images/favicon.svg">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./static/js/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
@@ -167,20 +166,14 @@
     <!-- Highlights -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
+        <h2 class="title is-3">Summary of Our Work</h2>
         <div class="content has-text-justified">
-          We consider the problem of novel view synthesis from unposed images in a single feed-forward. 
-          Our framework capitalizes on fast speed, scalability, and high-quality 3D reconstruction and view synthesis capabilities of 3DGS, 
-          where we further extend it to offer a practical solution that relaxes common assumptions such as dense image views, 
-          accurate camera poses, and substantial image overlaps. We achieve this through identifying and addressing unique challenges 
-          arising from the use of pixel-aligned 3DGS: misaligned 3D Gaussians across different views induce noisy or sparse gradients 
-          that destabilize training and hinder convergence, especially when above assumptions are not met. 
-          To mitigate this, we employ pre-trained monocular depth estimation and visual correspondence models to achieve coarse 
-          alignments of 3D Gaussians. We then introduce lightweight, learnable modules to refine depth and pose estimates from the coarse alignments, 
-          improving the quality of 3D reconstruction and novel view synthesis. Furthermore, the refined estimates are leveraged to estimate geometry 
-          confidence scores, which assess the reliability of 3D Gaussian centers and condition the prediction of Gaussian parameters accordingly. 
-          Extensive evaluations on large-scale real-world datasets demonstrate that PF3plat sets a new state-of-the-art across all benchmarks, 
-          supported by comprehensive ablation studies validating our design choices.
+          <ul>
+            <li style="font-size:18px">We address the challenging task of pose-free, feed-forward 3D reconstruction and novel view synthesis using 3DGS, and present <b>PF3plat</b>.</li>
+            <li style="font-size:18px">Our approach works well with wide-baseline images and requires no additional data beyond RGB images, relaxing many common assumptions of existing methods to improve practicality.</li>
+            <li style="font-size:18px">We identify and address the instable training process arising from the use of pixel-aligned 3DGS, and further improve the performance by introducing lightweight refinement modules.</li>
+            <li style="font-size:18px"><b>PF3plat</b> demonstrates state-of-the-art performance on RealEstate10K, ACID and DL3DV datasets for pose-free novel view synthesis task.</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -235,7 +228,95 @@
   </div>
 </section>
 
-<section class="section" style="padding-top: 0;">
+<section class="hero is-light">
+  <div class="hero-body" style="padding: 0;">
+    <div class="container is-max-desktop has-text-centered">
+      <h2 class="title is-3" style="margin-top: 10px;">Additional Results</h2>
+      <div id="carouselVideoReconstruction" class="carousel" data-slides-to-scroll="3" data-slides-to-show="4">
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/re10k-1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/acid-1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dl3dv-1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/re10k-2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/acid-2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dl3dv-2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/re10k-3.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/acid-3.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dl3dv-3.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/acid-4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dl3dv-4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/acid-5.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dl3dv-5.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/acid-6.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dl3dv-6.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <p class="has-text-centered" style="margin-top: 20px; margin-bottom: 20px;">
+        Uncurated additional results of <b>PF3plat</b> on multiple datasets.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 3;">
   <div class="container is-max-desktop">
 
     <div class="columns is-centered">
