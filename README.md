@@ -32,6 +32,6 @@
 **What to expect:**
 
 - 🌍 Demo code, taking only RGB images, for an easy use 
-- ⚡ Leveraging more recently released monocular metric depth estimation model, <a href="https://machinelearning.apple.com/research/depth-pro">DepthPro</a> 
+- ⚡ Leveraging more recently released monocular metric depth estimation model, <a href="https://machinelearning.apple.com/research/depth-pro">DepthPro</a>  or  <a href="https://wangrc.site/MoGePage/">MoGe</a> (Check out Jiaolong's new paper!).  
 - 🛠️ Training and evaluation code & scripts
 - 🚀 Releasing more generalized model (trained on full set of DL3DV and RealEstate10K)
