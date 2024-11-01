@@ -1,0 +1,22 @@
+git+https://github.com/facebookresearch/pytorch3d.git
+git+https://github.com/dcharatan/diff-gaussian-rasterization-modified
+xformers==0.0.20 --no-deps
+hydra-core
+wandb
+colorama
+pytorch_lightning==2.2.1
+dacite
+jaxtyping
+einops
+sk-video
+matplotlib
+e3nn
+huggingface_hub
+timm
+opencv-python
+kornia
+open3d
+colorspacious
+lpips
+moviepy
+scikit-image

@@ -1,0 +1,3 @@
+pose:
+  weight_2d: 0.005
+  weight_3d: 0.025
