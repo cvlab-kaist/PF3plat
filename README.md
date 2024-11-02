@@ -63,12 +63,16 @@ pip install -r requirements.txt
 - For DL3DV, please download from [here](https://drive.google.com/file/d/1QBjMoH1MimoUdu23OrsO1fUTn6Q5GlXO/view?usp=sharing). We include both training and evaluation sets in there. 
 
 - Note that we use the subset of DL3DV for training, so if you want to train and evaluate in your own way, you can prepare the dataset by following the instructions [here](https://github.com/cvg/depthsplat/blob/main/DATASETS.md).
+
+- By default, we assume all the datasets are placed in **datasets** directory. 
 ### Evaluation Dataset
 
 - For evaluation on RealEstate10K and ACID, we  follow [CoPoNeRF](https://github.com/cvlab-kaist/CoPoNeRF) and
  use different evaluation splits. Please download from [Re10k](https://drive.google.com/file/d/1PRx3Mj9IJ3eGwg2ZN-8ZXYzjObbhfwjf/view?usp=sharing) and   [ACID](https://drive.google.com/file/d/16Ql2sESqYFfc9qOjdkElQOW_qKoMNvaH/view?usp=sharing).
 
 - Note that the evaluation set, which contains 140 scenes for evaluation, is included along with the training set. 
+
+- By default, we assume all the datasets are placed in **datasets** directory. 
 
 
 

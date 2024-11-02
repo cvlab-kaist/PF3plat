@@ -37,8 +37,8 @@ loss:
 
 dataset: 
   image_shape: [256,256]
-  roots: [/mnt/data3/SPAM/SPAM/datasets/acid]
-  eval_roots: [/mnt/data3/SPAM/SPAM_uni_omni/acid_test]
+  roots: [datasets/acid]
+  eval_roots: [datasets/acid_test]
   near: 1.
   far: 100.
   baseline_scale_bounds: false

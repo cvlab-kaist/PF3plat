@@ -37,8 +37,8 @@ loss:
 
 dataset: 
   image_shape: [256,256]
-  roots: [/mnt/data3/SPAM/SPAM/datasets/re10k]
-  eval_roots: [/mnt/data3/SPAM/SPAM_uni_omni/realestate_copo_test]
+  roots: [datasets/re10k]
+  eval_roots: [realestate_copo_test]
   near: 1.
   far: 100.
   baseline_scale_bounds: false

@@ -37,7 +37,7 @@ loss:
 
 dataset: 
   image_shape: [256, 256]
-  roots: [/mnt/data4/dl3dv-3k4k/mix_full_version3/]
+  roots: [datasets/dl3dv-3k4k/mix_full_version3/]
   near: 1.
   far: 100.
   baseline_scale_bounds: false
