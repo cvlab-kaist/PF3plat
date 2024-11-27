@@ -85,11 +85,12 @@ class Datasetdl3dv(IterableDataset):
        
         for root in cfg.roots:
             root = root / self.data_stage
-            with open(root / "index.json", "r") as f:
-                json_dict = json.load(f)
-            root_chunks = sorted(list(set(json_dict.values())))
-       
+          
+            root_chunks = sorted(
+                [path for path in root.iterdir() if path.suffix == ".torch"]
+            )
             self.chunks.extend(root_chunks)
+ 
         if self.cfg.overfit_to_scene is not None:
             chunk_path = self.index[self.cfg.overfit_to_scene]
             self.chunks = [chunk_path] * len(self.chunks)
