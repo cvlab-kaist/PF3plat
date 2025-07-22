@@ -16,7 +16,7 @@
     <a href="https://cvlab.kaist.ac.kr/">Seungryong Kim<sup>†</sup></a>
   </p>
   <h3 align="center"> ICML 2025 </h3>
-  <h3 align="center"><a href="https://arxiv.org/pdf/2410.22128">Paper </a> | <a href="https://cvlab-kaist.github.io/PF3plat">Project Page </a> </h3>
+  <h3 align="center"><a href="https://openreview.net/pdf?id=VjI1NnsW4t">Paper </a> | <a href="https://cvlab-kaist.github.io/PF3plat">Project Page </a> </h3>
   <div align="center"></div>
 </p>
 
